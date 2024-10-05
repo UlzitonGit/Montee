@@ -32,8 +32,8 @@ public class PlayerChoose : MonoBehaviour
         print("h");
         if (heroActive == true && isSummonSpawned == true)
         {
-            //player.rb.isKinematic = true;
-            //summon.rb.isKinematic = false;
+            player.rb.isKinematic = true;
+            summon.rb.isKinematic = false;
             heroActive = false;
             summonActive = true;
             player.enabled = heroActive;
@@ -42,8 +42,8 @@ public class PlayerChoose : MonoBehaviour
         }
         else if (summonActive == true && isSummonSpawned == true)
         {
-            //player.rb.isKinematic = false;
-            //summon.rb.isKinematic = true;
+            player.rb.isKinematic = false;
+            summon.rb.isKinematic = true;
             heroActive = true;
             summonActive = false;
             player.enabled = heroActive;
@@ -53,8 +53,8 @@ public class PlayerChoose : MonoBehaviour
     }
     private void BackToPlayer()
     {
-        //thrwSummon.isSpawned = false;
-        //player.rb.isKinematic = false;
+        thrwSummon.isSpawned = false;
+        player.rb.isKinematic = false;
         isSummonSpawned = false;
         heroActive = true;
         summonActive = false;

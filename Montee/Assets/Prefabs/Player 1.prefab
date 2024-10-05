@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03f5885f43e911479f2dc7b2671c459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 5162210564336592312}
   moveVector: {x: 0, y: 0}
   moveSpeed: 7
   jumpForce: 60
