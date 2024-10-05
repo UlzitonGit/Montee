@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerChoose : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class PlayerChoose : MonoBehaviour
     [SerializeField] PlayerMovement player;
     public PlayerMovement summon;
     ThrowSummon thrwSummon;
+    [SerializeField] GameObject mainCamera;
     private void Start()
     {
         thrwSummon = GetComponentInChildren<ThrowSummon>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -26,6 +29,7 @@ public class PlayerChoose : MonoBehaviour
         {
             BackToPlayer();
         }
+        CameraController();
     }
     public void ChangeControl()
     {
@@ -60,5 +64,21 @@ public class PlayerChoose : MonoBehaviour
         summon.enabled = summonActive;
         Destroy(summon.gameObject);
         thrwSummon.isSpawned = false;
+    }
+
+    private void CameraController()
+    {
+        if (summonActive == true)
+        {
+            Vector3 pos = summon.transform.position;
+            pos.z = -10f;
+            mainCamera.transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
+        }
+        if (heroActive == true && summonActive == false)
+        {
+            Vector3 pos = player.transform.position;
+            pos.z = -10f;
+            mainCamera.transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
+        }
     }
 }

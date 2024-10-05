@@ -3037,6 +3037,7 @@ MonoBehaviour:
   isSummonSpawned: 0
   player: {fileID: 1486617398}
   summon: {fileID: 0}
+  mainCamera: {fileID: 519420028}
 --- !u!114 &1486617405
 MonoBehaviour:
   m_ObjectHideFlags: 0
