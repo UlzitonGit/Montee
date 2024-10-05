@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f, enemyLayer);
         if (collider.Length > 0)
         {
-            //стан
+            collider[0].GetComponent<EnemyBehaviour>().Stun();
             Destroy(gameObject);
         }
     }

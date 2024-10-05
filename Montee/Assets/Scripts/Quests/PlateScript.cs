@@ -25,11 +25,5 @@ public class PlateScript : MonoBehaviour
             door.transform.position = Vector2.MoveTowards(door.transform.position, new Vector2(target.position.x, target.position.y), 0.1f);
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Player")
-        {
 
-        }
-    }
-    }
+}
