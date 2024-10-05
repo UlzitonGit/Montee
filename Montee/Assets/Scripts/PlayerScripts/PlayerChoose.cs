@@ -72,13 +72,13 @@ public class PlayerChoose : MonoBehaviour
         {
             Vector3 pos = summon.transform.position;
             pos.z = -10f;
-            mainCamera.transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, pos, Time.deltaTime);
         }
         if (heroActive == true && summonActive == false)
         {
             Vector3 pos = player.transform.position;
             pos.z = -10f;
-            mainCamera.transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, pos, Time.deltaTime);
         }
     }
 }
