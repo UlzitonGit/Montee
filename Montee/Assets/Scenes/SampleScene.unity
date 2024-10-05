@@ -651,52 +651,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.323}
---- !u!1 &509447295
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 509447296}
-  - component: {fileID: 509447297}
-  m_Layer: 0
-  m_Name: Firepoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &509447296
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509447295}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.854, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 775695184}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &509447297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509447295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 665632d51e5dd1d4b8697573ac1d15c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  summonBullet: {fileID: 402689271894117597, guid: 93f222f91ed92284db8160c671193f7a, type: 3}
-  isSpawned: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,11 +1404,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &775695184 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3696256505919667522, guid: d1d7cc732df0e36458e87a12b2a20fa6, type: 3}
-  m_PrefabInstance: {fileID: 90694054062671299}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &839097831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2479,7 @@ GameObject:
   - component: {fileID: 1397813317}
   - component: {fileID: 1397813316}
   - component: {fileID: 1397813315}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2652,6 +2601,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -112.483}
+--- !u!1 &1486617397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6431022713081913380, guid: d1d7cc732df0e36458e87a12b2a20fa6, type: 3}
+  m_PrefabInstance: {fileID: 90694054062671299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1486617398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 104980576580284980, guid: d1d7cc732df0e36458e87a12b2a20fa6, type: 3}
+  m_PrefabInstance: {fileID: 90694054062671299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486617397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03f5885f43e911479f2dc7b2671c459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1486617401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486617397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2b625d1fa013e49b833fb0895b8bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroActive: 1
+  summonActive: 0
+  isSummonSpawned: 0
+  player: {fileID: 1486617398}
+  summon: {fileID: 0}
 --- !u!1 &1487224855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3105,11 +3087,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3696256505919667522, guid: d1d7cc732df0e36458e87a12b2a20fa6, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6431022713081913380, guid: d1d7cc732df0e36458e87a12b2a20fa6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 509447296}
-    m_AddedComponents: []
+      addedObject: {fileID: 1486617401}
   m_SourcePrefab: {fileID: 100100000, guid: d1d7cc732df0e36458e87a12b2a20fa6, type: 3}
 --- !u!1001 &6916504495851601332
 PrefabInstance:
