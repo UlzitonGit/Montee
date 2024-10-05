@@ -11,8 +11,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 4f;
     [SerializeField] float jumpForce = 4f;
     private bool isGrounded;
+    private bool isOnHold;
     [SerializeField] private GameObject _player;
+    [SerializeField] Transform holdPos;
+    [SerializeField] Transform groundPos;
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask holdLayer;
     public GameObject _fan;
+    private bool canJump = true;
+    private bool isJumping = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,22 +36,48 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGround();
+        CheckHold();
     }
     void Walk()
     {
         moveVector.x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
+        if (moveVector.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+        if (moveVector.x > 0) transform.localScale = new Vector3(1, 1, 1);
     }
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && (isGrounded == true || isOnHold == true) && canJump == true)
         {
+            canJump = false;
+            StartCoroutine(JumpReload());
+            rb.velocity = new Vector3(0, 0, 0);
             rb.AddForce(Vector2.up * jumpForce * 10);
         }
+        if(isOnHold == true && isJumping == false)
+        {          
+            
+            rb.velocity = new Vector3(0,0,0);
+        }
+        
+      
     }
     private void CheckGround()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f);
-        isGrounded = collider.Length > 1;
+        Collider2D[] collider = Physics2D.OverlapCircleAll(groundPos.position, 0.1f, groundLayer);
+        isGrounded = collider.Length > 0;
+    }
+    private void CheckHold()
+    {
+        Collider2D[] collider = Physics2D.OverlapCircleAll(holdPos.position, 0.3f, holdLayer);
+        isOnHold = collider.Length > 0;
+    }
+    IEnumerator JumpReload()
+    {
+        isJumping = true;
+        yield return new WaitForSeconds(0.1f);
+        isJumping = false;
+        yield return new WaitForSeconds(0.1f);
+        canJump = true;
     }
 }
