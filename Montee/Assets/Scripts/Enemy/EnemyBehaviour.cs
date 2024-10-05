@@ -9,6 +9,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Vector3 dir;
     [SerializeField] GameObject attackZone;
+    [SerializeField] LayerMask stunLayer;
+    [SerializeField] LayerMask basicLayer;
     private bool isRaged = false;
     private bool isActive = true;
     bool canAttack = true;
@@ -45,7 +47,9 @@ public class EnemyBehaviour : MonoBehaviour
     IEnumerator Stunning()
     {
         isActive = false;
+        gameObject.layer = 9;
         yield return new WaitForSeconds(2);
+        gameObject.layer = 7;
         isActive = true;
     }
     

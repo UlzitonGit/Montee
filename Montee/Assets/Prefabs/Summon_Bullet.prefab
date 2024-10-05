@@ -49,7 +49,7 @@ MonoBehaviour:
   dir: {x: 1, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
   toSummon: {fileID: 6431022713081913380, guid: 7d82962fad079b447a852e358f030bae, type: 3}
 --- !u!58 &4823143978661525509
 CircleCollider2D:
@@ -81,7 +81,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

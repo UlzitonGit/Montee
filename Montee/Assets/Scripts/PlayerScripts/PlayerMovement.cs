@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundPos;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask holdLayer;
+    public bool onZipLine = false;
     public GameObject _fan;
     private bool canJump = true;
     private bool isJumping = false;
@@ -47,8 +48,14 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
-        if (Input.GetKey(KeyCode.Space) && (isGrounded == true || isOnHold == true) && canJump == true)
+        if (Input.GetKey(KeyCode.Space) && (isGrounded == true || isOnHold == true || onZipLine == true) && canJump == true)
         {
+            if (onZipLine == true)
+            {
+                rb.isKinematic = false;
+                onZipLine = false;
+                transform.parent = null;
+            }
             canJump = false;
             StartCoroutine(JumpReload());
             rb.velocity = new Vector3(0, 0, 0);
