@@ -31,7 +31,7 @@ public class SummonBullet : MonoBehaviour
     }
     private void CheckGround()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.2f, groundLayer);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.4f, groundLayer);
         hited = collider.Length > 0;
 
     }

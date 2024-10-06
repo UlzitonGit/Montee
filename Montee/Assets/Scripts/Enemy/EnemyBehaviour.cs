@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject attackZone;
     [SerializeField] LayerMask stunLayer;
     [SerializeField] LayerMask basicLayer;
+    [SerializeField] ParticleSystem part;
     [SerializeField] bool isRanged;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject firePoint;
@@ -64,6 +65,7 @@ public class EnemyBehaviour : MonoBehaviour
     IEnumerator Stunning()
     {
         isActive = false;
+        part.Play();
         gameObject.layer = 9;
         yield return new WaitForSeconds(2);
         gameObject.layer = 7;
