@@ -19,6 +19,8 @@ public class EnemyBehaviour : MonoBehaviour
     private bool isRaged = false;
     private bool isActive = true;
     bool canAttack = true;
+    bool dashing = false;
+    bool canDash = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,19 +40,23 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(isActive == false) return;
         CheckPlayer();
-        if(isRaged && player.transform.position.x > transform.position.x)
+        if(dashing && player.transform.position.x > transform.position.x)
         {
-            transform.Translate(dir * Time.deltaTime);
+            transform.Translate(dir * 3 * Time.deltaTime);
         }
-        if (isRaged && player.transform.position.x < transform.position.x)
+        if (dashing && player.transform.position.x < transform.position.x)
         {
-            transform.Translate(dir * -1 * Time.deltaTime);
+            transform.Translate(dir * -3 * Time.deltaTime);
         }
         if (isRanged == true)
         {
             Vector3 difference = player.transform.position - firePoint.transform.position;
             float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             firePoint.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
+        }
+        if(isRaged == true && canDash == true )
+        {
+            StartCoroutine(Dashing());
         }
     }
     private void CheckPlayer()
@@ -61,6 +67,16 @@ public class EnemyBehaviour : MonoBehaviour
     public void Stun()
     {
         StartCoroutine(Stunning());
+    }
+    IEnumerator Dashing()
+    {
+        canDash = false;
+        dashing = true;
+        yield return new WaitForSeconds(0.5f);
+        dashing = false;
+        if(isActive ==true) StartCoroutine(AttackReload());
+        yield return new WaitForSeconds(2f);
+        canDash = true;
     }
     IEnumerator Stunning()
     {
@@ -73,19 +89,10 @@ public class EnemyBehaviour : MonoBehaviour
     }
     
     IEnumerator AttackReload()
-    {
-        yield return new WaitForSeconds(4);
-        if(isRaged == true && isActive == true)
-        {
-            GameObject att = Instantiate(attackZone, transform.position, transform.rotation);
-            yield return new WaitForSeconds(0.2f);
-            Destroy(att.gameObject);
-            StartCoroutine(AttackReload());
-        }
-        else
-        {
-            StartCoroutine(AttackReload());
-        }
+    {       
+         GameObject att = Instantiate(attackZone, transform.position, transform.rotation);
+         yield return new WaitForSeconds(0.2f);
+         Destroy(att.gameObject);         
     }
     IEnumerator AttackRanged()
     {

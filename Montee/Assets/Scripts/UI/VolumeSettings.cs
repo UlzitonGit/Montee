@@ -6,30 +6,30 @@ using UnityEngine.UI;
 
 public class VolumeSettings : MonoBehaviour
 {
-    [SerializeField] private AudioMixer myMixer;
+    [SerializeField] private AudioSource Music;
+    [SerializeField] private AudioSource SFX;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXSlider;
+    float musicVolume;
+    float sfxVolume;
     void Start()
     {
-        
+        musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+        musicSlider.value = musicVolume;
+        SFXSlider.value = sfxVolume;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        musicVolume = musicSlider.value;
+        sfxVolume = SFXSlider.value;
+        Music.volume = musicVolume;
+        SFX.volume = sfxVolume;
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
     }
 
-    public void SetMusicVolume()         // накидывать на слайдер
-    {
-        float musicVolume = musicSlider.value;
-        PlayerPrefs.SetFloat("musicVolume", musicVolume); // сейв значения
-        myMixer.SetFloat("music", Mathf.Log10(musicVolume)*20); // миксер музыки меню
-    }
-    public void SetSFXVolume()         // накидывать на слайдер
-    {
-        float SFXVolume = musicSlider.value;
-        PlayerPrefs.SetFloat("SFXVolume", SFXVolume); // сейв значения
-        myMixer.SetFloat("SFX", Mathf.Log10(SFXVolume) * 20); // миксер музыки меню
-    }
+  
 }
