@@ -11,6 +11,10 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject attackZone;
     [SerializeField] LayerMask stunLayer;
     [SerializeField] LayerMask basicLayer;
+    [SerializeField] bool isRanged;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject firePoint;
+    [SerializeField] float offset;
     private bool isRaged = false;
     private bool isActive = true;
     bool canAttack = true;
@@ -18,7 +22,14 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         player = FindFirstObjectByType<PlayerMovement>();
-        StartCoroutine(AttackReload());
+        if (isRanged == true)
+        {
+            StartCoroutine(AttackRanged());
+        }
+        else
+        {
+            StartCoroutine(AttackReload());
+        }
     }
 
     // Update is called once per frame
@@ -33,6 +44,12 @@ public class EnemyBehaviour : MonoBehaviour
         if (isRaged && player.transform.position.x < transform.position.x)
         {
             transform.Translate(dir * -1 * Time.deltaTime);
+        }
+        if (isRanged == true)
+        {
+            Vector3 difference = player.transform.position - firePoint.transform.position;
+            float rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            firePoint.transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
         }
     }
     private void CheckPlayer()
@@ -68,4 +85,18 @@ public class EnemyBehaviour : MonoBehaviour
             StartCoroutine(AttackReload());
         }
     }
+    IEnumerator AttackRanged()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (isRaged == true && isActive == true)
+        {
+            GameObject att = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+            StartCoroutine(AttackRanged());
+        }
+        else
+        {
+            StartCoroutine(AttackRanged());
+        }
+    }
+    
 }

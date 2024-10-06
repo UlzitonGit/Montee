@@ -12,13 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 4f;
     private bool isGrounded;
     private bool isOnHold;
-    [SerializeField] private GameObject _player;
     [SerializeField] Transform holdPos;
     [SerializeField] Transform groundPos;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask holdLayer;
     public bool onZipLine = false;
-    public GameObject _fan;
     private bool canJump = true;
     private bool isJumping = false;
     void Start()
