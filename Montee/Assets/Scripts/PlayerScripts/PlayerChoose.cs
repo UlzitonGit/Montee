@@ -14,6 +14,8 @@ public class PlayerChoose : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     bool backing = false;
     bool isBack= false;
+    [SerializeField] float timeToBack;
+    public float currentTime = 0;
     private void Start()
     {
         thrwSummon = GetComponentInChildren<ThrowSummon>();
@@ -27,7 +29,7 @@ public class PlayerChoose : MonoBehaviour
         {
             ChangeControl();
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && summon != null)
         {
             StartCoroutine(BackToPlayer());
         }
@@ -35,7 +37,15 @@ public class PlayerChoose : MonoBehaviour
         if(backing == true)
         {
             if(summon != null) summon.transform.position = Vector3.Lerp(summon.transform.position, player.transform.position, 2.5f * Time.deltaTime);
-
+        }
+        if(heroActive == true && summon != null)
+        {
+            currentTime += Time.deltaTime;
+            if(currentTime >= timeToBack )
+            {
+                currentTime = 0;
+                StartCoroutine(BackToPlayer());
+            }
         }
     }
     public void ChangeControl()
@@ -52,7 +62,7 @@ public class PlayerChoose : MonoBehaviour
         }
         else if (summonActive == true && isSummonSpawned == true)
         {
-            StartCoroutine(DelayBeforeBack());
+            currentTime = 0;
             heroActive = true;
             summonActive = false;
             player.enabled = heroActive;
@@ -60,18 +70,11 @@ public class PlayerChoose : MonoBehaviour
             summon.rb.velocity = new Vector3(0, 0, 0);
         }
     }
-    IEnumerator DelayBeforeBack()
-    {
-
-        yield return new WaitForSeconds(8);
-        print("crt");
-        StartCoroutine(BackToPlayer());
-    }
+  
     IEnumerator BackToPlayer()
     {
         if(isBack == false)
-        {
-            
+        {           
             isBack = true;
             backing = true;
             summon.rb.isKinematic = true;
