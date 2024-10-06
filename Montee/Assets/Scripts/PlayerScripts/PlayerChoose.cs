@@ -12,6 +12,8 @@ public class PlayerChoose : MonoBehaviour
     public PlayerMovement summon;
     ThrowSummon thrwSummon;
     [SerializeField] GameObject mainCamera;
+    bool backing = false;
+    bool isBack= false;
     private void Start()
     {
         thrwSummon = GetComponentInChildren<ThrowSummon>();
@@ -21,20 +23,25 @@ public class PlayerChoose : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) )
         {
             ChangeControl();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            BackToPlayer();
+            StartCoroutine(BackToPlayer());
         }
         CameraController();
+        if(backing == true)
+        {
+            if(summon != null) summon.transform.position = Vector3.Lerp(summon.transform.position, player.transform.position, 2.5f * Time.deltaTime);
+
+        }
     }
     public void ChangeControl()
     {
-        print("h");
-        if (heroActive == true && isSummonSpawned == true)
+        //print("h");
+        if (heroActive == true && isSummonSpawned == true && backing == false)
         {
             
             heroActive = false;
@@ -45,7 +52,7 @@ public class PlayerChoose : MonoBehaviour
         }
         else if (summonActive == true && isSummonSpawned == true)
         {
-          
+            StartCoroutine(DelayBeforeBack());
             heroActive = true;
             summonActive = false;
             player.enabled = heroActive;
@@ -53,17 +60,36 @@ public class PlayerChoose : MonoBehaviour
             summon.rb.velocity = new Vector3(0, 0, 0);
         }
     }
-    private void BackToPlayer()
+    IEnumerator DelayBeforeBack()
     {
-        
-        
-        isSummonSpawned = false;
-        heroActive = true;
-        summonActive = false;
-        player.enabled = heroActive;
-        summon.enabled = summonActive;
-        Destroy(summon.gameObject);
-        thrwSummon.isSpawned = false;
+
+        yield return new WaitForSeconds(8);
+        print("crt");
+        StartCoroutine(BackToPlayer());
+    }
+    IEnumerator BackToPlayer()
+    {
+        if(isBack == false)
+        {
+            
+            isBack = true;
+            backing = true;
+            summon.rb.isKinematic = true;
+            summon.GetComponent<CapsuleCollider2D>().enabled = false;
+            summon.enabled = false;
+            if (heroActive == false) ChangeControl();
+            yield return new WaitForSeconds(3);
+            backing = false;
+            isSummonSpawned = false;
+            heroActive = true;
+            summonActive = false;
+            player.enabled = heroActive;
+            summon.enabled = summonActive;
+            Destroy(summon.gameObject);
+            thrwSummon.isSpawned = false;
+            isBack = false;
+        }
+      
     }
 
     private void CameraController()

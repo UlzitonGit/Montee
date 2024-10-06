@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 5162210564336592312}
   - component: {fileID: 3550417575506025982}
   - component: {fileID: 104980576580284980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -330,6 +330,7 @@ MonoBehaviour:
   holdLayer:
     serializedVersion: 2
     m_Bits: 64
+  onZipLine: 0
   _fan: {fileID: 0}
 --- !u!1 &8894024323774806985
 GameObject:
