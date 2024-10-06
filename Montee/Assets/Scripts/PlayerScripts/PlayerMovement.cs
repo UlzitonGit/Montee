@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (onZipLine == true)
             {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 rb.isKinematic = false;
                 onZipLine = false;
                 transform.parent = null;
