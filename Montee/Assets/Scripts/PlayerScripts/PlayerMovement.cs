@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip stepSound1;
     [SerializeField] private AudioClip stepSound2;
     [SerializeField] private AudioClip stepSound3;
+    [SerializeField] private AudioClip jumpSound;
     private AudioSource audioSource;
     void Start()
     {
@@ -131,6 +132,10 @@ public class PlayerMovement : MonoBehaviour
         {
             audioSource.PlayOneShot(stepSound3, PlayerPrefs.GetFloat("sfxVolume"));
         }
+    }
+    public void PlaySoundJump()
+    {
+        audioSource.PlayOneShot(jumpSound, PlayerPrefs.GetFloat("sfxVolume"));
     }
 }
 
