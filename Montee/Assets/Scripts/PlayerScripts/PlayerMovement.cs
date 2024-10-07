@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public bool onZipLine = false;
     private bool canJump = true;
     private bool isJumping = false;
+    [SerializeField] Animator anim;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGrounded) State = States.idle;
         Walk();
         Jump();
     }
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Walk()
     {
+        if (isGrounded) State = States.run;
         moveVector.x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
         if (moveVector.x < 0) transform.localScale = new Vector3(-1, 1, 1);
@@ -87,4 +90,15 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         canJump = true;
     }
+    private States State
+    {
+        get { return (States)anim.GetInteger("State"); }
+        set { anim.SetInteger("State", (int)value); }
+    }
+}
+
+public enum States
+{
+    idle,
+    run
 }
