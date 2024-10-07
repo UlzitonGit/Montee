@@ -14603,7 +14603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   part: {fileID: 6279549113322533104, guid: f3a60fa9c04874240a6e7fa40f2f01fb, type: 3}
   enemyLayer:
     serializedVersion: 2

@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGrounded) State = States.idle;
+        if (isGrounded) anim.SetInteger("State", 0);
         Walk();
         Jump();
     }
@@ -42,11 +42,12 @@ public class PlayerMovement : MonoBehaviour
     }
     void Walk()
     {
-        if (isGrounded) State = States.run;
+        
         moveVector.x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
         if (moveVector.x < 0) transform.localScale = new Vector3(-1, 1, 1);
         if (moveVector.x > 0) transform.localScale = new Vector3(1, 1, 1);
+        if (isGrounded && moveVector.x != 0) anim.SetInteger("State", 1);
     }
     void Jump()
     {
@@ -90,15 +91,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         canJump = true;
     }
-    private States State
-    {
-        get { return (States)anim.GetInteger("State"); }
-        set { anim.SetInteger("State", (int)value); }
-    }
+   
 }
 
-public enum States
-{
-    idle,
-    run
-}
