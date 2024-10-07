@@ -21,11 +21,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     [SerializeField] Animator anim;
     float camSize = 20;
-    [SerializeField] PlayerChoose animChecker;
+    [SerializeField] private AudioClip stepSound1;
+    [SerializeField] private AudioClip stepSound2;
+    [SerializeField] private AudioClip stepSound3;
+    private AudioSource audioSource;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 2f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,10 +38,6 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && isOnHold == false) anim.SetInteger("State", 0);
         if (onZipLine == true) anim.SetInteger("State", 2);
         if (!isGrounded && isOnHold == false) anim.SetInteger("State", 3);
-        if (animChecker.isSummonSpawned)
-        {
-            anim.SetInteger("State", 0);
-        }
         Walk();
         Jump();
         if(camSize > cam.orthographicSize)
@@ -62,7 +62,10 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
         if (moveVector.x < 0) transform.localScale = new Vector3(-1, 1, 1);
         if (moveVector.x > 0) transform.localScale = new Vector3(1, 1, 1);
-        if (isGrounded && moveVector.x != 0 && isOnHold == false) anim.SetInteger("State", 1);
+        if (isGrounded && moveVector.x != 0 && isOnHold == false)
+        {
+            anim.SetInteger("State", 1);
+        }
     }
     void Jump()
     {
@@ -113,6 +116,21 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         canJump = true;
     }
-   
+    public void PlaySoundStep()
+    {
+        int rnd = Random.Range(1, 4);
+        if (rnd == 1)
+        {
+            audioSource.PlayOneShot(stepSound1, PlayerPrefs.GetFloat("sfxVolume"));
+        }
+        else if (rnd == 2)
+        {
+            audioSource.PlayOneShot(stepSound2, PlayerPrefs.GetFloat("sfxVolume"));
+        }
+        else
+        {
+            audioSource.PlayOneShot(stepSound3, PlayerPrefs.GetFloat("sfxVolume"));
+        }
+    }
 }
 

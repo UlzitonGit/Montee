@@ -17,6 +17,7 @@ public class PlayerChoose : MonoBehaviour
     [SerializeField] float timeToBack;
     public float currentTime = 0;
     [SerializeField] Animator playerAnimFix;
+
     private void Start()
     {
         thrwSummon = GetComponentInChildren<ThrowSummon>();
