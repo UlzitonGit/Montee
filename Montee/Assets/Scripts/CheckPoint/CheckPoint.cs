@@ -32,6 +32,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            other.GetComponent<PlayerHealth>().GetDamage(-100);
             if (PlayerPrefs.GetInt("Checkpoint") < index)
             {
                 for (int i = 0; i < animator.Length; i++)

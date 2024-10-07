@@ -10,6 +10,8 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] private AudioSource SFX;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXSlider;
+    [SerializeField] GameObject optionsPanel;
+    bool panelActive = false;
     float musicVolume;
     float sfxVolume;
     void Start()
@@ -18,14 +20,26 @@ public class VolumeSettings : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         musicSlider.value = musicVolume;
         SFXSlider.value = sfxVolume;
-        Sett();
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        if (Input.GetKeyDown(KeyCode.P) && panelActive == false)
+        {
+            optionsPanel.SetActive(true);
+            Time.timeScale = 0;
+            panelActive = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.P) && panelActive == true)
+        {
+            optionsPanel.SetActive(false);
+            Time.timeScale = 1;
+            panelActive = false;
+            Sett();
+        }
     }
     public void Sett()
     {

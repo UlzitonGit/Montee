@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     public void GetDamage(float damage)
     {
         currentHealth -= damage;
+        if(currentHealth > maxHealth)  currentHealth = maxHealth; 
         print(currentHealth / maxHealth);
         hpBar.fillAmount = currentHealth / maxHealth;
         if(currentHealth <= 0)
