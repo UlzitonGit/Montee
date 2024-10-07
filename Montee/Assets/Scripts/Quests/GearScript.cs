@@ -39,6 +39,9 @@ namespace Quests
             if (currentNumber == Counter) 
             {
                 _isSpinning = true;
+                SoundScripts EMPImpact = FindObjectOfType<SoundScripts>();
+
+                EMPImpact.GearSound(); 
             }
         }
     }

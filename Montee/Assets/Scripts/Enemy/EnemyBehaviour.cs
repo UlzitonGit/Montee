@@ -101,7 +101,10 @@ public class EnemyBehaviour : MonoBehaviour
     {
          anim.SetTrigger("Attack");
          yield return new WaitForSeconds(0.2f);
-         GameObject att = Instantiate(attackZone, transform.position, transform.rotation);
+        SoundScripts EMPImpact = FindObjectOfType<SoundScripts>();
+
+        EMPImpact.KickSound();
+        GameObject att = Instantiate(attackZone, transform.position, transform.rotation);
          yield return new WaitForSeconds(0.2f);
          Destroy(att.gameObject);         
     }

@@ -11,6 +11,8 @@ public class SoundScripts : MonoBehaviour
     [SerializeField] private AudioClip stepSound3;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip EMPImpact;
+    [SerializeField] private AudioClip GearStart;
+    [SerializeField] private AudioClip Kick;
     private AudioSource audioSource;
     // Start is called before the first frame update
     private void Start()
@@ -44,5 +46,13 @@ public class SoundScripts : MonoBehaviour
     public void EMPImpactSound()
     {
         audioSource.PlayOneShot(EMPImpact, PlayerPrefs.GetFloat("sfxVolume"));
+    }
+    public void GearSound()
+    {
+        audioSource.PlayOneShot(GearStart, PlayerPrefs.GetFloat("sfxVolume"));
+    }
+    public void KickSound()
+    {
+        audioSource.PlayOneShot(Kick, PlayerPrefs.GetFloat("sfxVolume"));
     }
 }
