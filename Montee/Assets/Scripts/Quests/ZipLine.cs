@@ -18,7 +18,7 @@ public class ZipLine : MonoBehaviour
         {
             collision.GetComponent<PlayerMovement>().onZipLine = true;
             collision.transform.parent = transform;
-            
+            collision.GetComponent<PlayerMovement>().rb.velocity = new Vector3 (0, 0, 0);
             collision.GetComponent<PlayerMovement>().rb.isKinematic = true;
         }
     }

@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Walk()
     {
-        
+        if (onZipLine == true) return;
         moveVector.x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
         if (moveVector.x < 0) transform.localScale = new Vector3(-1, 1, 1);

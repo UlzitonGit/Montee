@@ -10,6 +10,8 @@ public class PlayerChoose : MonoBehaviour
     public PlayerMovement summon;
     ThrowSummon thrwSummon;
     [SerializeField] GameObject mainCamera;
+    [SerializeField] PhysicsMaterial2D physicsMaterialActive;
+    [SerializeField] PhysicsMaterial2D physicsMaterialInActive;
     bool backing = false;
     bool isBack= false;
     [SerializeField] float timeToBack;
@@ -50,7 +52,8 @@ public class PlayerChoose : MonoBehaviour
         //print("h");
         if (heroActive == true && isSummonSpawned == true && backing == false)
         {
-            
+            player.rb.sharedMaterial = physicsMaterialInActive;
+            summon.rb.sharedMaterial = physicsMaterialActive;
             heroActive = false;
             summonActive = true;
             player.enabled = heroActive;
@@ -59,6 +62,8 @@ public class PlayerChoose : MonoBehaviour
         }
         else if (summonActive == true && isSummonSpawned == true)
         {
+            player.rb.sharedMaterial = physicsMaterialActive;
+            summon.rb.sharedMaterial = physicsMaterialInActive;
             currentTime = 0;
             heroActive = true;
             summonActive = false;
