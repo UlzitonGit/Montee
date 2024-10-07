@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -67,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if(isOnHold == true && isJumping == false)
         {          
-            
             rb.velocity = new Vector3(0,0,0);
         }
         

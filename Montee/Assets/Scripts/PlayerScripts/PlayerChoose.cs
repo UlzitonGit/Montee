@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerChoose : MonoBehaviour
 {
@@ -20,7 +18,6 @@ public class PlayerChoose : MonoBehaviour
     {
         thrwSummon = GetComponentInChildren<ThrowSummon>();
     }
-
 
     // Update is called once per frame
     void Update()
@@ -92,7 +89,6 @@ public class PlayerChoose : MonoBehaviour
             thrwSummon.isSpawned = false;
             isBack = false;
         }
-      
     }
 
     private void CameraController()

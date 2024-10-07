@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
@@ -7,10 +6,6 @@ public class Shooting : MonoBehaviour
     [SerializeField] GameObject summonBullet;
     [SerializeField] Transform spawnPoint;
     bool canShoot = true;
-    void Start()
-    {
-
-    }
 
     void Update()
     {

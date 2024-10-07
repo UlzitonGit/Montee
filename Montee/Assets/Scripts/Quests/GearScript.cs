@@ -1,24 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Rendering.Universal;
 
-public class GearScript : MonoBehaviour
+namespace Quests
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GearScript : MonoBehaviour
     {
-        
-    }
+        private const int Counter = 3;
+        private bool _isSpinning;
 
-    // Update is called once per frame
-    void Update()
-    {
+        public GameObject[] lights = new GameObject[3];
         
-    }
+        public int currentNumber;
+        
+        private void Start()
+        {
+            _isSpinning = false;
+            currentNumber = 0;
+        }
+        
+        private void FixedUpdate()
+        {
+            if (_isSpinning)
+            {
+                transform.Rotate(0f, 0f, -1f);
+            }
+        }
+        
+        public void CountUpdate()
+        {
+            if (currentNumber < Counter)
+            {
+                lights[currentNumber].GetComponent<Light2D>().color = Color.green;
+                currentNumber++;
+            }
 
-    private void FixedUpdate()
-    {
-        transform.Rotate(0f, 0f, -1f);
+            if (currentNumber == Counter) 
+            {
+                _isSpinning = true;
+            }
+        }
     }
 }
