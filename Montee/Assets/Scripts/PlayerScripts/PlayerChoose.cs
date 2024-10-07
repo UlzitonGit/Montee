@@ -16,6 +16,7 @@ public class PlayerChoose : MonoBehaviour
     bool isBack= false;
     [SerializeField] float timeToBack;
     public float currentTime = 0;
+    [SerializeField] Animator playerAnimFix;
     private void Start()
     {
         thrwSummon = GetComponentInChildren<ThrowSummon>();
@@ -100,6 +101,7 @@ public class PlayerChoose : MonoBehaviour
     {
         if (summonActive == true)
         {
+            playerAnimFix.SetInteger("State", 0);
             Vector3 pos = summon.transform.position;
             pos.z = -10f;
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, pos, Time.deltaTime);

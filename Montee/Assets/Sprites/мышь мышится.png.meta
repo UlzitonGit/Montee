@@ -160,6 +160,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -551,7 +564,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_0": -885462525600373072
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_1": 5449206459945072105
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_10": -5237456628601593141
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_11": 4830101587966909240
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_12": -6185264852932969862
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_13": -4604823200237234646
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_14": 2131751521245871010
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_15": -9075959951835639359
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_16": 6365585170562589442
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_17": 7174535084652972629
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_2": -2457774854311454008
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_3": 8486491801958351952
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_4": 7150004780345103309
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_5": -3401159172072417635
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_6": 9146323172525960465
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_7": 5836920026555579297
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_8": 4463117306785413949
+      "\u043C\u044B\u0448\u044C \u043C\u044B\u0448\u0438\u0442\u0441\u044F_9": -6221359573139535219
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

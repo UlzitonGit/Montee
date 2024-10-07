@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6818052628822817822}
   - component: {fileID: 851490281424476860}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4193946773940726854}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7793460054725279249}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorTarget (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 3166106549563224705}
   - component: {fileID: 78504597382706683}
   - component: {fileID: 7537649771052120958}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 323584913987154999}
   - component: {fileID: 5179926705886883196}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

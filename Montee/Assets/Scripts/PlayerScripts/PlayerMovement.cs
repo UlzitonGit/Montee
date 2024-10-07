@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     [SerializeField] Animator anim;
     float camSize = 20;
+    [SerializeField] PlayerChoose animChecker;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && isOnHold == false) anim.SetInteger("State", 0);
         if (onZipLine == true) anim.SetInteger("State", 2);
         if (!isGrounded && isOnHold == false) anim.SetInteger("State", 3);
+        if (animChecker.isSummonSpawned)
+        {
+            anim.SetInteger("State", 0);
+        }
         Walk();
         Jump();
         if(camSize > cam.orthographicSize)
