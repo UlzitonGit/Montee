@@ -19605,6 +19605,7 @@ MonoBehaviour:
   isRanged: 0
   bulletPrefab: {fileID: 0}
   firePoint: {fileID: 0}
+  spriteRenderer: {fileID: 7086918759990541382}
   anim: {fileID: 5532090601277519617}
   offset: 0
 --- !u!1 &7442525844488221041

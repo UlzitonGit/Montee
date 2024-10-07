@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] bool isRanged;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject firePoint;
+    [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Animator anim;
     [SerializeField] float offset;
     private bool isRaged = false;
@@ -44,10 +45,12 @@ public class EnemyBehaviour : MonoBehaviour
         if(dashing && player.transform.position.x > transform.position.x)
         {
             transform.Translate(dir * 3 * Time.deltaTime);
+            spriteRenderer.flipX = true;
         }
         if (dashing && player.transform.position.x < transform.position.x)
         {
             transform.Translate(dir * -3 * Time.deltaTime);
+            spriteRenderer.flipX = false;
         }
         if (isRanged == true)
         {
@@ -84,7 +87,9 @@ public class EnemyBehaviour : MonoBehaviour
         isActive = false;
         part.Play();
         gameObject.layer = 9;
+        anim.SetBool("Shocked", true);
         yield return new WaitForSeconds(2);
+        anim.SetBool("Shocked", false);
         gameObject.layer = 7;
         isActive = true;
     }
