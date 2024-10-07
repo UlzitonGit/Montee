@@ -10,4 +10,8 @@ public class QsceneMananger : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+    public void menu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
