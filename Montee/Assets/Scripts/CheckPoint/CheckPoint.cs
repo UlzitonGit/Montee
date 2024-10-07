@@ -5,6 +5,9 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     [SerializeField] Transform player;
+    [SerializeField] Animator[] animator;
+    [SerializeField] ParticleSystem part;
+    [SerializeField] GameObject light;
     public int index;
 
     void Awake()
@@ -12,6 +15,14 @@ public class CheckPoint : MonoBehaviour
         if (PlayerPrefs.GetInt("Checkpoint") == index)
         {
             player.position = transform.position;
+
+            for (int i = 0; i < animator.Length; i++)
+            {
+                animator[i].SetTrigger("Start");
+            }
+            part.Play();
+            light.SetActive(true);
+            PlayerPrefs.SetInt("Checkpoint", index);
         }
         Debug.Log(PlayerPrefs.GetInt("Checkpoint"));
     }
@@ -23,6 +34,12 @@ public class CheckPoint : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("Checkpoint") < index)
             {
+                for (int i = 0; i < animator.Length; i++)
+                {
+                    animator[i].SetTrigger("Start");
+                }
+                part.Play();
+                light.SetActive(true);
                 PlayerPrefs.SetInt("Checkpoint", index);
             }
         }

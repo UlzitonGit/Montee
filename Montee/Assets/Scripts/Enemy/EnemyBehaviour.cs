@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] bool isRanged;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject firePoint;
+    [SerializeField] Animator anim;
     [SerializeField] float offset;
     private bool isRaged = false;
     private bool isActive = true;
@@ -89,7 +90,9 @@ public class EnemyBehaviour : MonoBehaviour
     }
     
     IEnumerator AttackReload()
-    {       
+    {
+         anim.SetTrigger("Attack");
+         yield return new WaitForSeconds(0.2f);
          GameObject att = Instantiate(attackZone, transform.position, transform.rotation);
          yield return new WaitForSeconds(0.2f);
          Destroy(att.gameObject);         
