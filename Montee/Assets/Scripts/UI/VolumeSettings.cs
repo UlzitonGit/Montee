@@ -18,10 +18,16 @@ public class VolumeSettings : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         musicSlider.value = musicVolume;
         SFXSlider.value = sfxVolume;
+        Sett();
+
     }
 
     // Update is called once per frame
     void Update()
+    {
+      
+    }
+    public void Sett()
     {
         musicVolume = musicSlider.value;
         sfxVolume = SFXSlider.value;
@@ -30,6 +36,5 @@ public class VolumeSettings : MonoBehaviour
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
         PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
     }
-
   
 }
