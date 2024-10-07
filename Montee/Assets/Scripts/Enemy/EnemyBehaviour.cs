@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -27,14 +26,14 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         player = FindFirstObjectByType<PlayerMovement>();
-        if (isRanged == true)
-        {
-            StartCoroutine(AttackRanged());
-        }
-        else
-        {
-            StartCoroutine(AttackReload());
-        }
+        //if (isRanged == true)
+       // {
+          //  StartCoroutine(AttackRanged());
+       // }
+       // else
+        //{
+        //    StartCoroutine(AttackReload());
+        //}
     }
 
     // Update is called once per frame
@@ -99,14 +98,14 @@ public class EnemyBehaviour : MonoBehaviour
     
     IEnumerator AttackReload()
     {
-         anim.SetTrigger("Attack");
-         yield return new WaitForSeconds(0.2f);
+        anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.2f);
         SoundScripts EMPImpact = FindObjectOfType<SoundScripts>();
 
         EMPImpact.KickSound();
         GameObject att = Instantiate(attackZone, transform.position, transform.rotation);
-         yield return new WaitForSeconds(0.2f);
-         Destroy(att.gameObject);         
+        yield return new WaitForSeconds(0.2f);
+        Destroy(att.gameObject);
     }
     IEnumerator AttackRanged()
     {

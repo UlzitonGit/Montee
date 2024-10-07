@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
@@ -30,9 +28,12 @@ public class CheckPoint : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player") || other.GetComponent<PlayerMovement>() != null)
         {
-            other.GetComponent<PlayerHealth>().GetDamage(-100);
+            if (other.GetComponent<PlayerMovement>() != null)
+            {
+                other.GetComponent<PlayerHealth>().GetDamage(-100);
+            }
             if (PlayerPrefs.GetInt("Checkpoint") < index)
             {
                 for (int i = 0; i < animator.Length; i++)

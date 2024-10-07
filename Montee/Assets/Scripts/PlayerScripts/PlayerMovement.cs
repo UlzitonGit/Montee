@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     [SerializeField] Animator anim;
     float camSize = 20;
+    
+    bool Typing = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,6 +47,13 @@ public class PlayerMovement : MonoBehaviour
         if (camSize < cam.orthographicSize)
         {
             cam.orthographicSize -= Time.deltaTime * 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && !Typing)
+        {
+           int scene = SceneManager.GetActiveScene().buildIndex;
+           SceneManager.LoadScene(scene);
+           Typing = true;
         }
     }
 

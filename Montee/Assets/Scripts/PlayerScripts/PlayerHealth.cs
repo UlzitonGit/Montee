@@ -22,8 +22,9 @@ public class PlayerHealth : MonoBehaviour
         print(currentHealth / maxHealth);
         hpBar.fillAmount = currentHealth / maxHealth;
         if(currentHealth <= 0)
-        {
-            SceneManager.LoadScene(0);
+        { 
+            int scene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(scene);
         }
     }
 }

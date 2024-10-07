@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class VolumeSettings : MonoBehaviour
@@ -14,17 +11,27 @@ public class VolumeSettings : MonoBehaviour
     bool panelActive = false;
     float musicVolume;
     float sfxVolume;
+    
+    private bool _isFirstTime = true;
     void Start()
     {
         musicVolume = PlayerPrefs.GetFloat("musicVolume");
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
-        musicSlider.value = musicVolume;
-        SFXSlider.value = sfxVolume;
-        
 
+        if (_isFirstTime)
+        {
+            musicSlider.value = 1f;
+            SFXSlider.value = 1f;
+            
+            _isFirstTime = false;
+        }
+        else
+        {
+            musicSlider.value = musicVolume;
+            SFXSlider.value = sfxVolume;
+        }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) && panelActive == false)
