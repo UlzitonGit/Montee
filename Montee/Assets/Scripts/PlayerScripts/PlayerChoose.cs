@@ -7,7 +7,7 @@ public class PlayerChoose : MonoBehaviour
     public bool summonActive = false;
     public bool isSummonSpawned = false;
     [SerializeField] PlayerMovement player;
-    public PlayerMovement summon;
+    public PlayerMovementSumnmon summon;
     ThrowSummon thrwSummon;
     [SerializeField] GameObject mainCamera;
     [SerializeField] PhysicsMaterial2D physicsMaterialActive;

@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3696256505919667522}
   - component: {fileID: 5162210564336592312}
   - component: {fileID: 3550417575506025982}
-  - component: {fileID: 104980576580284980}
+  - component: {fileID: 781636064229184401}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -132,7 +132,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.17121908, y: -0.54629266}
   m_Size: {x: 0.65756184, y: 0.65756184}
   m_Direction: 0
---- !u!114 &104980576580284980
+--- !u!114 &781636064229184401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6431022713081913380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03f5885f43e911479f2dc7b2671c459, type: 3}
+  m_Script: {fileID: 11500000, guid: 40f8db23c1cd0b64aa2dff1c00f32b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5162210564336592312}
@@ -152,7 +152,7 @@ MonoBehaviour:
   groundPos: {fileID: 3662702914648988155}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
   holdLayer:
     serializedVersion: 2
     m_Bits: 64

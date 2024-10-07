@@ -11,6 +11,8 @@ namespace Quests
         public GameObject[] lights = new GameObject[3];
         
         public int currentNumber;
+        [SerializeField] bool needAtcivation = true;
+        [SerializeField] int speedModofication = 1;
         
         private void Start()
         {
@@ -20,9 +22,9 @@ namespace Quests
         
         private void FixedUpdate()
         {
-            if (_isSpinning)
+            if (_isSpinning || needAtcivation == false)
             {
-                transform.Rotate(0f, 0f, -1f);
+                transform.Rotate(0f, 0f, -1f * speedModofication);
             }
         }
         

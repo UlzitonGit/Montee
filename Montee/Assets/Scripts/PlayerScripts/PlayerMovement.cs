@@ -15,10 +15,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundPos;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask holdLayer;
+    [SerializeField] Camera cam;
     public bool onZipLine = false;
     private bool canJump = true;
     private bool isJumping = false;
     [SerializeField] Animator anim;
+    float camSize = 20;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,9 +30,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGrounded) anim.SetInteger("State", 0);
+        if (isGrounded && isOnHold == false) anim.SetInteger("State", 0);
+        if (onZipLine == true) anim.SetInteger("State", 2);
+        if (!isGrounded && isOnHold == false) anim.SetInteger("State", 3);
         Walk();
         Jump();
+        if(camSize > cam.orthographicSize)
+        {
+            cam.orthographicSize += Time.deltaTime * 2;
+        }
+        if (camSize < cam.orthographicSize)
+        {
+            cam.orthographicSize -= Time.deltaTime * 2;
+        }
     }
 
     private void FixedUpdate()
@@ -45,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
         if (moveVector.x < 0) transform.localScale = new Vector3(-1, 1, 1);
         if (moveVector.x > 0) transform.localScale = new Vector3(1, 1, 1);
-        if (isGrounded && moveVector.x != 0) anim.SetInteger("State", 1);
+        if (isGrounded && moveVector.x != 0 && isOnHold == false) anim.SetInteger("State", 1);
     }
     void Jump()
     {
@@ -70,15 +82,23 @@ public class PlayerMovement : MonoBehaviour
         
       
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("cameraZone"))
+        {
+           camSize = collision.GetComponent<CameraZones>().size;
+        }
+    }
     private void CheckGround()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(groundPos.position, 0.05f, groundLayer);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(groundPos.position, 0.1f, groundLayer);
         isGrounded = collider.Length > 0;
     }
     private void CheckHold()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(holdPos.position, 0.3f, holdLayer);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(holdPos.position, 0.1f, holdLayer);
         isOnHold = collider.Length > 0;
+        if(isOnHold == true) anim.SetInteger("State", 2);
     }
     IEnumerator JumpReload()
     {

@@ -9,7 +9,7 @@ public class EnemyAttackZone : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerHealth>().GetDamage(damage);
+            if(collision.GetComponent<PlayerHealth>() != null) collision.GetComponent<PlayerHealth>().GetDamage(damage);
             Destroy(gameObject);
         }
     }

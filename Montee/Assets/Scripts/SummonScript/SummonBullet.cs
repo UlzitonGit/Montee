@@ -24,7 +24,7 @@ public class SummonBullet : MonoBehaviour
             GameObject summon = Instantiate(toSummon,transform.position, Quaternion.identity);
             PlayerChoose pl = FindFirstObjectByType<PlayerChoose>();
             pl.isSummonSpawned = true;         
-            pl.summon = summon.GetComponent<PlayerMovement>();
+            pl.summon = summon.GetComponent<PlayerMovementSumnmon>();
             pl.ChangeControl();
             Destroy(gameObject);
         }
