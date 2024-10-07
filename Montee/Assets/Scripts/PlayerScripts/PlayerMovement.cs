@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isOnHold;
     [SerializeField] Transform holdPos;
+ 
     [SerializeField] Transform groundPos;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] LayerMask holdLayer;

@@ -15,13 +15,13 @@ public class InGameOptions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && panelActive == false)
+        if(Input.GetKeyDown(KeyCode.P) && panelActive == false)
         {
             optionsPanel.SetActive(true);
             Time.timeScale = 0;
             panelActive = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && panelActive == true)
+        else if (Input.GetKeyDown(KeyCode.P) && panelActive == true)
         {
             optionsPanel.SetActive(false);
             Time.timeScale = 1;

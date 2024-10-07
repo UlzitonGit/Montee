@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
@@ -8,12 +9,21 @@ public class Shooting : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     bool canShoot = true;
     [SerializeField] SoundScripts EMPSFX;
+    [SerializeField] Image reload;
+    float reloads = 0;
+    bool isReloading = false;
 
     void Update()
     {
         if (Input.GetKey(KeyCode.Mouse0) && canShoot)
         {
             Shoot();
+        }
+        if(isReloading == true)
+        {
+            
+            reloads += Time.deltaTime;
+            reload.fillAmount = reloads;
         }
     }
 
@@ -26,7 +36,12 @@ public class Shooting : MonoBehaviour
     private IEnumerator Reload()
     {
         canShoot = false;
+        isReloading = true;
+        reload.enabled = true;
         yield return new WaitForSeconds(1);
+        reload.enabled = false;
+        reloads = 0;
+        isReloading = false;
         canShoot = true;
     }
 }
