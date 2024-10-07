@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Shooting : MonoBehaviour
 {
     [SerializeField] GameObject summonBullet;
     [SerializeField] Transform spawnPoint;
     bool canShoot = true;
+    [SerializeField] SoundScripts EMPSFX;
 
     void Update()
     {
@@ -19,6 +21,7 @@ public class Shooting : MonoBehaviour
     {
         Instantiate(summonBullet, spawnPoint.position, spawnPoint.rotation);
         StartCoroutine(Reload());
+        EMPSFX.EMPSound();
     }
     private IEnumerator Reload()
     {

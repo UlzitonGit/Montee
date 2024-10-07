@@ -21,16 +21,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     [SerializeField] Animator anim;
     float camSize = 20;
-    [SerializeField] private AudioClip stepSound1;
-    [SerializeField] private AudioClip stepSound2;
-    [SerializeField] private AudioClip stepSound3;
-    [SerializeField] private AudioClip jumpSound;
-    private AudioSource audioSource;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 2f;
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -116,26 +110,6 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         yield return new WaitForSeconds(0.1f);
         canJump = true;
-    }
-    public void PlaySoundStep()
-    {
-        int rnd = Random.Range(1, 4);
-        if (rnd == 1)
-        {
-            audioSource.PlayOneShot(stepSound1, PlayerPrefs.GetFloat("sfxVolume"));
-        }
-        else if (rnd == 2)
-        {
-            audioSource.PlayOneShot(stepSound2, PlayerPrefs.GetFloat("sfxVolume"));
-        }
-        else
-        {
-            audioSource.PlayOneShot(stepSound3, PlayerPrefs.GetFloat("sfxVolume"));
-        }
-    }
-    public void PlaySoundJump()
-    {
-        audioSource.PlayOneShot(jumpSound, PlayerPrefs.GetFloat("sfxVolume"));
     }
 }
 

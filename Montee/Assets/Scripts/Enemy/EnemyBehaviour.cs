@@ -71,6 +71,9 @@ public class EnemyBehaviour : MonoBehaviour
     public void Stun()
     {
         StartCoroutine(Stunning());
+        SoundScripts EMPImpact = FindObjectOfType<SoundScripts>();
+
+        EMPImpact.EMPImpactSound();
     }
     IEnumerator Dashing()
     {
