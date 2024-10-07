@@ -34,6 +34,17 @@ public class SceneChanger : MonoBehaviour
             yield return 0;
         }
     }
+    IEnumerator LoadSceneNew()
+    {
+        yield return new WaitForSeconds(1f);
+        asyncOperation = SceneManager.LoadSceneAsync(1);
+        while (!asyncOperation.isDone)
+        {
+            float progress = asyncOperation.progress / 0.9f;
+            loadBar.fillAmount = progress;
+            yield return 0;
+        }
+    }
     public void StartButtonClick()
     {
         menuPanel.SetActive(false);
@@ -43,5 +54,9 @@ public class SceneChanger : MonoBehaviour
     public void NewGame()
     {
         PlayerPrefs.SetInt("Checkpoint", 0);
+        menuPanel.SetActive(false);
+        loadingPanel.SetActive(true);
+        StartCoroutine(LoadSceneNew());
+
     }
 }
