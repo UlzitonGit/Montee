@@ -114,6 +114,8 @@ public class PlayerMovement : MonoBehaviour
         Collider2D[] collider = Physics2D.OverlapCircleAll(holdPos.position, 0.1f, holdLayer);
         isOnHold = collider.Length > 0;
         if(isOnHold == true) anim.SetInteger("State", 2);
+        if (isOnHold == true) rb.gravityScale = 0;
+        if (isOnHold == false) rb.gravityScale = 2;
     }
     IEnumerator JumpReload()
     {
